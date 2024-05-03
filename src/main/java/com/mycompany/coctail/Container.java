@@ -9,14 +9,12 @@ public class Container {
     private double capacity;
     private double volume;
     private double noOfCalories;
-    private Color color;
     
     public Container(){}
-    public Container(double capacity, double volume, double noOfCalories, Color color){
+    public Container(double capacity, double volume, double noOfCalories){
         this.capacity = capacity;
         this.volume = volume;
         this.noOfCalories = noOfCalories;
-        this.color = color;
     }
 
     public void setCapacity(double capacity) {
@@ -31,10 +29,6 @@ public class Container {
         this.noOfCalories = noOfCalories;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
     public double getCapacity() {
         return capacity;
     }
@@ -46,14 +40,10 @@ public class Container {
     public double getNoOfCalories() {
         return noOfCalories;
     }
-
-    public Color getColor() {
-        return color;
-    }
-    
     
     public String getInfo(){
-        return "Hello";
+        return "Capacity: " + this.capacity + ", Volume: " + this.volume + ", Number OF Calories: "
+                + this.noOfCalories;
     }
     
 }

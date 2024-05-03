@@ -5,7 +5,7 @@ package com.mycompany.coctail;
  * @author user
  */
 
-public class Ingredient {
+public abstract class Ingredient {
     
     private String name;
     private double noOfCalories;
@@ -20,8 +20,44 @@ public class Ingredient {
         this.color = color;
     }
     
+
+    public String getName() {
+        return name;
+    }
+
+    public double getNoOfCalories() {
+        return noOfCalories;
+    }
+
+    public double getVolume() {
+        return volume;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNoOfCalories(double noOfCalories) {
+        this.noOfCalories = noOfCalories;
+    }
+
+    public void setVolume(double volume) {
+        this.volume = volume;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
+    
+    
     public String getInfo(){
-        return "hello";
+        return "Name: " + this.name + ", Number Of Calories: " + this.noOfCalories + ", Volume: "
+                + this.volume + ", Color = " + this.color.getInfo();
     }
     
 }
