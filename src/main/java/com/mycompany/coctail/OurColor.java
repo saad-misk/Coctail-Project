@@ -4,11 +4,11 @@ package com.mycompany.coctail;
  *
  * @author user
  */
-public class Color {
+public class OurColor {
     
     private int red, green, blue;
-    public Color(){}
-    public Color(int red, int green, int blue)
+    public OurColor(){}
+    public OurColor(int red, int green, int blue)
     {
         this.red = red;
         this.green = green;
@@ -33,12 +33,12 @@ public class Color {
         this.blue = blue;
     }
     
-    public static Color mixColors(Color a, Color b){
+    public static OurColor mixColors(OurColor a, OurColor b){
         int Red = (a.getRed() + b.getRed()) / 2;
         int Green = (a.getGreen() + b.getGreen()) / 2;
         int Blue = (a.getBlue() + b.getBlue()) / 2;
         
-        return new Color(Red, Green, Blue);
+        return new OurColor(Red, Green, Blue);
     }
     
     public static String convertToMainColor(int red, int green, int blue) {

@@ -48,7 +48,7 @@ public class Main {
                     }
                     switch (typeOfIngrdient) {
                         case 1 -> {
-                            Fruit f = new Fruit(name, calories, volume, new Color(red, green, blue));
+                            Fruit f = new Fruit(name, calories, volume, new OurColor(red, green, blue));
                             try{
                                 blender.add(f);
                             }catch(BlenderOverFlowException e){
@@ -56,7 +56,7 @@ public class Main {
                             }
                         }
                         case 2 -> {
-                            Drink d = new Drink(name, calories, volume, new Color(red, green, blue));
+                            Drink d = new Drink(name, calories, volume, new OurColor(red, green, blue));
                             try{
                                 blender.add(d);
                             }catch(BlenderOverFlowException e){
@@ -64,7 +64,7 @@ public class Main {
                             }
                         }
                         default -> {
-                            Extra extra = new Extra(name, calories, volume, new Color(red, green, blue));
+                            Extra extra = new Extra(name, calories, volume, new OurColor(red, green, blue));
                             try{
                                 blender.add(extra);
                             }catch(BlenderOverFlowException e){
@@ -182,7 +182,7 @@ public class Main {
             System.out.println("There are no cups yet, make some coctail and pour some cups:)");
         }
         for(int i = 0; i < cups.size(); i++){
-            System.out.println( "cup " + i + ": " + cups.get(i).getInfo());
+            System.out.println( "cup " + i+1 + ": " + cups.get(i).getInfo());
         }
     }
     

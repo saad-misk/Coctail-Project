@@ -24,7 +24,10 @@ public class Blender extends Container {
     public boolean isBlended() {
         return blended;
     }
-    
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
     
     
     public void blend() throws EmptyBlenderException{
@@ -46,7 +49,7 @@ public class Blender extends Container {
             b += v;
             c += v;
         }
-        Color col = new Color(totRed/a, totGreen/b, totBlue/c);
+        OurColor col = new OurColor(totRed/a, totGreen/b, totBlue/c);
         Coctail coctail = new Coctail("coctail", calories, volume, col);
         
         ingredients.clear();
@@ -73,8 +76,8 @@ public class Blender extends Container {
         }
         if( x.getCapacity() < this.getVolume() ){
             x.setVolume(x.getCapacity());
+            double cal = (x.getVolume() / this.getVolume()) * ingredients.getFirst().getNoOfCalories();
             this.setVolume(this.getVolume() - x.getCapacity());
-            double cal = (this.getVolume() / x.getVolume()) * ingredients.getFirst().getNoOfCalories();
             ingredients.getFirst().setVolume(this.getVolume());
             this.setNoOfCalories(this.getNoOfCalories() - cal);
             ingredients.getFirst().setNoOfCalories(this.getNoOfCalories());

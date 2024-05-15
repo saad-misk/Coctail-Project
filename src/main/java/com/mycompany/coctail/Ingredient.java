@@ -10,10 +10,10 @@ public abstract class Ingredient {
     private String name;
     private double noOfCalories;
     private double volume;
-    private Color color;
+    private OurColor color;
     
     public Ingredient(){}
-    public Ingredient(String name, double noOfCalories, double volume, Color color){
+    public Ingredient(String name, double noOfCalories, double volume, OurColor color){
         this.name = name;
         this.noOfCalories = noOfCalories;
         this.volume = volume;
@@ -33,7 +33,7 @@ public abstract class Ingredient {
         return volume;
     }
 
-    public Color getColor() {
+    public OurColor getColor() {
         return color;
     }
 
@@ -49,7 +49,7 @@ public abstract class Ingredient {
         this.volume = volume;
     }
 
-    public void setColor(Color color) {
+    public void setColor(OurColor color) {
         this.color = color;
     }
     

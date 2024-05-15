@@ -7,7 +7,7 @@ package com.mycompany.coctail;
 public class Drink extends Ingredient{
     
     public Drink(){}
-    public Drink(String name, double noOfCalories, double volume, Color color){
+    public Drink(String name, double noOfCalories, double volume, OurColor color){
         super(name, noOfCalories, volume, color);
     }
     

@@ -7,7 +7,7 @@ package com.mycompany.coctail;
 public class Extra extends Ingredient{
     
     public Extra(){}
-    public Extra(String name, double noOfCalories, double volume, Color color){
+    public Extra(String name, double noOfCalories, double volume, OurColor color){
         super(name, noOfCalories, volume, color);
     }
     
