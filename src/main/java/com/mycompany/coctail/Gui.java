@@ -4,26 +4,35 @@
  */
 package com.mycompany.coctail;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.ListModel;
 
-/**
- *
- * @author user
- */
+
 public class Gui extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Gui
-     */
-    static AddIngredient adding = new AddIngredient();
+    
+    AddIngredient addIngredients = new AddIngredient(Gui.this);
+    IngredientsTable ingredientsTable = new IngredientsTable(Gui.this);
+    CupsTable cupsTable = new CupsTable(Gui.this);
     static Blender blender;
     ArrayList<Cup> cups = new ArrayList<>();
+    
+    
     public Gui() {
         initComponents();
-        
+    }
+    
+    public ArrayList<Ingredient> getIngredients(){
+        return blender.getIngredients();
+    }
+    
+    public ArrayList<Cup> getCups(){
+        return cups;
     }
     
     /**
@@ -35,25 +44,38 @@ public class Gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        buttons = new javax.swing.JPanel();
         AddAnIngredient = new javax.swing.JButton();
-        Blend = new javax.swing.JButton();
+        blendBtn = new javax.swing.JButton();
         PrintIngredients = new javax.swing.JButton();
         PourCup = new javax.swing.JButton();
         HowManyCups = new javax.swing.JButton();
         PrintCups = new javax.swing.JButton();
         Exit = new javax.swing.JButton();
+        Title = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        cupsInfo = new javax.swing.JTextArea();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 500));
+        setBackground(new java.awt.Color(245, 0, 0));
+        setForeground(new java.awt.Color(255, 0, 51));
+        setMaximumSize(new java.awt.Dimension(600, 500));
         setResizable(false);
+        setSize(new java.awt.Dimension(600, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(152, 219, 124));
+        jPanel2.setForeground(new java.awt.Color(41, 66, 115));
+        jPanel2.setMaximumSize(new java.awt.Dimension(600, 500));
+        jPanel2.setMinimumSize(new java.awt.Dimension(600, 500));
+        jPanel2.setPreferredSize(new java.awt.Dimension(600, 500));
+
+        buttons.setBackground(new java.awt.Color(152, 219, 124));
+        buttons.setForeground(new java.awt.Color(56, 33, 16));
+
+        AddAnIngredient.setBackground(new java.awt.Color(255, 71, 85));
+        AddAnIngredient.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         AddAnIngredient.setText("Add An Ingredient");
         AddAnIngredient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,13 +83,17 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        Blend.setText("Blend");
-        Blend.addActionListener(new java.awt.event.ActionListener() {
+        blendBtn.setBackground(new java.awt.Color(255, 71, 85));
+        blendBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        blendBtn.setText("Blend");
+        blendBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BlendActionPerformed(evt);
+                blendBtnActionPerformed(evt);
             }
         });
 
+        PrintIngredients.setBackground(new java.awt.Color(255, 71, 85));
+        PrintIngredients.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PrintIngredients.setText("Print Ingredients");
         PrintIngredients.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,6 +101,8 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        PourCup.setBackground(new java.awt.Color(255, 71, 85));
+        PourCup.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PourCup.setText("Pour A Cup");
         PourCup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +110,8 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        HowManyCups.setBackground(new java.awt.Color(255, 71, 85));
+        HowManyCups.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         HowManyCups.setText("How Many Cups?");
         HowManyCups.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +119,8 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        PrintCups.setBackground(new java.awt.Color(255, 71, 85));
+        PrintCups.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         PrintCups.setText("Print Cups Info");
         PrintCups.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,6 +128,8 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
+        Exit.setBackground(new java.awt.Color(255, 71, 85));
+        Exit.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         Exit.setText("Exit");
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,165 +137,166 @@ public class Gui extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Blend, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PrintCups, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+        javax.swing.GroupLayout buttonsLayout = new javax.swing.GroupLayout(buttons);
+        buttons.setLayout(buttonsLayout);
+        buttonsLayout.setHorizontalGroup(
+            buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(PrintCups, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HowManyCups, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(buttonsLayout.createSequentialGroup()
+                        .addGroup(buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PourCup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AddAnIngredient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(blendBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(PrintIngredients, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(HowManyCups, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PourCup, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PrintIngredients, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AddAnIngredient, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
+                    .addComponent(Exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
-                .addComponent(AddAnIngredient)
+        buttonsLayout.setVerticalGroup(
+            buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonsLayout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(AddAnIngredient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(blendBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(Blend)
+                .addComponent(PrintIngredients, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(PrintIngredients)
-                .addGap(18, 18, 18)
-                .addComponent(PourCup)
+                .addComponent(PourCup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(HowManyCups)
                 .addGap(18, 18, 18)
                 .addComponent(PrintCups)
                 .addGap(18, 18, 18)
-                .addComponent(Exit)
-                .addGap(34, 34, 34))
+                .addComponent(Exit))
         );
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
-        jLabel2.setText("     Cocktail App");
+        Title.setBackground(new java.awt.Color(152, 219, 124));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
+        jLabel2.setText("Cocktail App");
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setText("Let's Make some delicious cocktail😋");
 
-        cupsInfo.setColumns(20);
-        cupsInfo.setRows(5);
-        jScrollPane2.setViewportView(cupsInfo);
-
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(39, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+        javax.swing.GroupLayout TitleLayout = new javax.swing.GroupLayout(Title);
+        Title.setLayout(TitleLayout);
+        TitleLayout.setHorizontalGroup(
+            TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addGap(1, 1, 1)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(46, 46, 46))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
+        TitleLayout.setVerticalGroup(
+            TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TitleLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(174, 174, 174))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 500));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void AddAnIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAnIngredientActionPerformed
-        adding.setVisible(true);
-    }//GEN-LAST:event_AddAnIngredientActionPerformed
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
+        int option = JOptionPane.showConfirmDialog(this, "Are You Sure?", "Exit", JOptionPane.YES_NO_OPTION);
+        if(option == JOptionPane.YES_OPTION )
+        System.exit(0);
+    }//GEN-LAST:event_ExitActionPerformed
 
-    private void BlendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BlendActionPerformed
-        JOptionPane.showMessageDialog(null, "Done!", "Blend is", JOptionPane.INFORMATION_MESSAGE);
+    private void PrintCupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintCupsActionPerformed
+        cupsTable.printCups();
+        cupsTable.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PrintCupsActionPerformed
+
+    private void HowManyCupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HowManyCupsActionPerformed
         try{
-            blender.blend();
-            blender.setBlended(true);
-        }catch(EmptyBlenderException e){
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!",  
-                                           JOptionPane.WARNING_MESSAGE);
+            String s = JOptionPane.showInputDialog("Enter the size of your cup");
+            double cupSize = Double.parseDouble(s);
+            int number = (int) (blender.getVolume() / cupSize);
+            JOptionPane.showMessageDialog(null, number, "Look how many: ", JOptionPane.INFORMATION_MESSAGE);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(this, "please enter a number", "Error",JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_BlendActionPerformed
-
-    private void PrintIngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintIngredientsActionPerformed
-        
-        ArrayList<Ingredient> arr = blender.getIngredients();
-        String p = "";
-        for(Ingredient i : arr){
-            p += i.getInfo();
-            p += "\n";
-        }
-        jTextArea1.setText(p);
-        
-    }//GEN-LAST:event_PrintIngredientsActionPerformed
+    }//GEN-LAST:event_HowManyCupsActionPerformed
 
     private void PourCupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PourCupActionPerformed
-        String s = JOptionPane.showInputDialog("Enter the size of your cup");
-        double cupSize = Double.parseDouble(s);
-        Cup cup = new Cup(cupSize, 0, 0);
+
         try{
+            String s = JOptionPane.showInputDialog("Enter the size of your cup");
+            double cupSize = Double.parseDouble(s);
+            Cup cup = new Cup(cupSize, 0, 0);
             Gui.blender.pour(cup);
             cups.add(cup);
         }catch(EmptyBlenderException e1){
             JOptionPane.showMessageDialog(null, e1.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
         }catch(NotAbleToPourException e2){
             JOptionPane.showMessageDialog(null, e2.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "please enter a number", "Exception!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_PourCupActionPerformed
 
-    private void HowManyCupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HowManyCupsActionPerformed
-       String s = JOptionPane.showInputDialog("Enter the size of your cup");
-       double cupSize = Double.parseDouble(s);
-        int number = (int) (blender.getVolume() / cupSize);
-        JOptionPane.showMessageDialog(null, number, "Look how many: ",  
-                                           JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_HowManyCupsActionPerformed
+    private void PrintIngredientsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintIngredientsActionPerformed
+        ingredientsTable.printIngredients();
+        ingredientsTable.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_PrintIngredientsActionPerformed
 
-    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
-        int option = JOptionPane.showConfirmDialog(this, "Are You Sure?", "Exit", JOptionPane.YES_NO_OPTION);
-        if(option == JOptionPane.YES_OPTION )
-            System.exit(0);
-    }//GEN-LAST:event_ExitActionPerformed
-
-    private void PrintCupsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PrintCupsActionPerformed
-        String txt = "";
-        for(Cup c : cups){
-            txt += c.getInfo();
-            txt += '\n';
+    private void blendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blendBtnActionPerformed
+        try{
+            blender.blend();
+            blender.setBlended(true);
+            JOptionPane.showMessageDialog(null, "Done!", "Blend is", JOptionPane.INFORMATION_MESSAGE);
+        }catch(EmptyBlenderException e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!",  JOptionPane.WARNING_MESSAGE);
         }
-        cupsInfo.setText(txt);
-    }//GEN-LAST:event_PrintCupsActionPerformed
+    }//GEN-LAST:event_blendBtnActionPerformed
+
+    private void AddAnIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAnIngredientActionPerformed
+        addIngredients.printIngredients();
+        addIngredients.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_AddAnIngredientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,8 +329,13 @@ public class Gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gui().setVisible(true);
-                String s = JOptionPane.showInputDialog("Enter the Capacity of your Blender:");
-                double Capacity = Double.parseDouble(s);
+                double Capacity = 10000;
+                try{
+                    String s = JOptionPane.showInputDialog("Enter the Capacity of your Blender:");
+                    Capacity = Double.parseDouble(s);    
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null, "please enter a number", "Error",JOptionPane.WARNING_MESSAGE);
+                }
                 blender = new Blender(Capacity, 0, 0, false);
             }
         });
@@ -303,18 +343,16 @@ public class Gui extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddAnIngredient;
-    private javax.swing.JButton Blend;
     private javax.swing.JButton Exit;
     private javax.swing.JButton HowManyCups;
     private javax.swing.JButton PourCup;
     private javax.swing.JButton PrintCups;
     private javax.swing.JButton PrintIngredients;
-    private javax.swing.JTextArea cupsInfo;
+    private javax.swing.JPanel Title;
+    private javax.swing.JButton blendBtn;
+    private javax.swing.JPanel buttons;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

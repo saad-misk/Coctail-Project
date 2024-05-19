@@ -12,4 +12,9 @@ public class Fruit extends Ingredient{
         super(name, noOfCalories, volume, color);
     }
     
+    @Override
+    public String getType(){
+        return "Fruit";
+    }
+    
 }

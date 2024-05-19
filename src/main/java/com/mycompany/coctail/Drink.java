@@ -11,4 +11,8 @@ public class Drink extends Ingredient{
         super(name, noOfCalories, volume, color);
     }
     
+    @Override
+    public String getType(){
+        return "Drink";
+    }
 }

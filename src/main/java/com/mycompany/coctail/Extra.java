@@ -11,4 +11,8 @@ public class Extra extends Ingredient{
         super(name, noOfCalories, volume, color);
     }
     
+    @Override
+    public String getType(){
+        return "Extra";
+    }
 }

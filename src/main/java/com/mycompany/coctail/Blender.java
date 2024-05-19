@@ -76,11 +76,11 @@ public class Blender extends Container {
         }
         if( x.getCapacity() < this.getVolume() ){
             x.setVolume(x.getCapacity());
-            double cal = (x.getVolume() / this.getVolume()) * ingredients.getFirst().getNoOfCalories();
+            double cal = (x.getVolume() / this.getVolume()) * ingredients.get(0).getNoOfCalories();
             this.setVolume(this.getVolume() - x.getCapacity());
-            ingredients.getFirst().setVolume(this.getVolume());
+            ingredients.get(0).setVolume(this.getVolume());
             this.setNoOfCalories(this.getNoOfCalories() - cal);
-            ingredients.getFirst().setNoOfCalories(this.getNoOfCalories());
+            ingredients.get(0).setNoOfCalories(this.getNoOfCalories());
             x.setNoOfCalories(cal);
         }else{
             x.setVolume(this.getVolume());
