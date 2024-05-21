@@ -21,7 +21,10 @@ public class Main {
     
     public static void main(String args[]){
         
+        Logger myLogger = new MyLogger();
+        Logger fileLogger = new FileLogger("loggerFile.txt");
         
+
         while(true){
             
             
@@ -124,6 +127,9 @@ public class Main {
             System.out.println("************************************************");
         }         
         
+        if(fileLogger instanceof FileLogger){
+            ((FileLogger) fileLogger).close();
+        }
     }
 
     public static void readChoice(){
