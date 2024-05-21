@@ -6,9 +6,11 @@ package com.mycompany.coctail;
  */
 public class Cup extends Container {
     
+    public static int cups = 0;
+    
     public Cup(){}
-    public Cup(double capacity, double volume, double noOfCalories, Color color){
-        super( capacity, volume, noOfCalories, color);
+    public Cup(double capacity, double volume, double noOfCalories){
+        super( capacity, volume, noOfCalories);
     }
     
 }
