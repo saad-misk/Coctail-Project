@@ -117,6 +117,9 @@ public class Main {
                     break;
                 }
                 case 7 -> {
+                    if (fileLogger instanceof FileLogger) {
+                        ((FileLogger) fileLogger).close();
+                    }
                     return;
                 }
                 default -> {
@@ -127,9 +130,7 @@ public class Main {
             System.out.println("************************************************");
         }         
         
-        if(fileLogger instanceof FileLogger){
-            ((FileLogger) fileLogger).close();
-        }
+        
     }
 
     public static void readChoice(){

@@ -189,13 +189,14 @@ public class Gui extends javax.swing.JFrame {
         TitleLayout.setHorizontalGroup(
             TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TitleLayout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addGap(46, 46, 46))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TitleLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TitleLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel2))
+                    .addGroup(TitleLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)))
+                .addGap(30, 30, 30))
         );
         TitleLayout.setVerticalGroup(
             TitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,8 +218,8 @@ public class Gui extends javax.swing.JFrame {
                         .addComponent(buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(147, 147, 147)
-                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(174, 174, 174))
+                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(118, 118, 118))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,6 +294,21 @@ public class Gui extends javax.swing.JFrame {
     }//GEN-LAST:event_blendBtnActionPerformed
 
     private void AddAnIngredientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAnIngredientActionPerformed
+        
+        double Capacity = -1;
+        while(true){
+            try{
+                String s = JOptionPane.showInputDialog("Enter the Capacity of your Blender:");
+                Capacity = Double.parseDouble(s);    
+            }catch(Exception e){
+                JOptionPane.showMessageDialog(null, "please enter a number", "Error",JOptionPane.WARNING_MESSAGE);
+            }
+            if(Capacity > 0){
+                blender = new Blender(Capacity, 0, 0, false);
+                break;
+            }
+        }
+        
         addIngredients.printIngredients();
         addIngredients.setVisible(true);
         dispose();
@@ -329,14 +345,6 @@ public class Gui extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Gui().setVisible(true);
-                double Capacity = 10000;
-                try{
-                    String s = JOptionPane.showInputDialog("Enter the Capacity of your Blender:");
-                    Capacity = Double.parseDouble(s);    
-                }catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "please enter a number", "Error",JOptionPane.WARNING_MESSAGE);
-                }
-                blender = new Blender(Capacity, 0, 0, false);
             }
         });
     }

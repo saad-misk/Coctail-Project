@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
-class FileLogger implements Logger {
+public class FileLogger implements Logger {
     private FileWriter fileWriter;
 
     public FileLogger(String fileName) {

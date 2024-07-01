@@ -103,12 +103,14 @@ public class AddIngredient extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 500));
-        setPreferredSize(new java.awt.Dimension(600, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(600, 500));
 
         jPanel1.setBackground(new java.awt.Color(152, 219, 124));
         jPanel1.setForeground(new java.awt.Color(56, 33, 16));
+        jPanel1.setMaximumSize(new java.awt.Dimension(600, 500));
+        jPanel1.setMinimumSize(new java.awt.Dimension(600, 500));
+        jPanel1.setPreferredSize(new java.awt.Dimension(600, 500));
 
         Model.setBackground(new java.awt.Color(255, 71, 85));
         Model.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fruit", "Drink", "Extra" }));
@@ -165,16 +167,16 @@ public class AddIngredient extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Ingredients:");
 
         volSlider.setBackground(new java.awt.Color(0, 0, 0));
-        volSlider.setMajorTickSpacing(100);
-        volSlider.setMaximum(301);
-        volSlider.setMinimum(1);
+        volSlider.setMajorTickSpacing(150);
+        volSlider.setMaximum(600);
         volSlider.setMinorTickSpacing(50);
         volSlider.setPaintLabels(true);
         volSlider.setPaintTicks(true);
+        volSlider.setValue(100);
         volSlider.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 volSliderMouseDragged(evt);
@@ -203,7 +205,7 @@ public class AddIngredient extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Name", "Type", "No. of Calories", "Volume"
+                "Name", "Type", "No. of Calories", "Volume", "Color in RGB"
             }
         ));
         ingredientsTable.setGridColor(new java.awt.Color(56, 33, 16));
@@ -227,6 +229,10 @@ public class AddIngredient extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(backBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,15 +265,10 @@ public class AddIngredient extends javax.swing.JFrame {
                             .addGap(98, 98, 98)))
                     .addComponent(volSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 556, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addContainerGap()
@@ -279,7 +280,7 @@ public class AddIngredient extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(243, 243, 243)
                             .addComponent(jLabel5)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap(245, Short.MAX_VALUE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jSeparator1)
                             .addContainerGap()))))
@@ -311,9 +312,9 @@ public class AddIngredient extends javax.swing.JFrame {
                             .addComponent(colorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addComponent(addBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(47, 47, 47)
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,18 +325,18 @@ public class AddIngredient extends javax.swing.JFrame {
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel5)
-                    .addContainerGap(270, Short.MAX_VALUE)))
+                    .addContainerGap(267, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -373,39 +374,35 @@ public class AddIngredient extends javax.swing.JFrame {
         readInput();
         selectedIngredient = (String) Model.getSelectedItem();
         DefaultTableModel tbModel = (DefaultTableModel) ingredientsTable.getModel();
-        
+
         if (name == null || name.isEmpty() || Double.isNaN(calories) || Double.isNaN(volume)) {
             JOptionPane.showMessageDialog(null, "Invalid input!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+
+        String colorRow = "(" + Integer.toString(red) + ", " + Integer.toString(green) + ", " + Integer.toString(blue) + ")";
         
-        String [] data = {name, selectedIngredient, Double.toString(calories), Double.toString(volume)};
-        if( "Fruit".equals(selectedIngredient) ){
-            Fruit f = new Fruit(name, calories, volume, new OurColor(red, green, blue));
-            try{
+        String[] data = {name, selectedIngredient, Double.toString(calories), Double.toString(volume), colorRow};
+
+        try {
+            if ("Fruit".equals(selectedIngredient)) {
+                Fruit f = new Fruit(name, calories, volume, new OurColor(red, green, blue));
                 Gui.blender.add(f);
-                tbModel.addRow(data);
-            }catch(BlenderOverFlowException e){
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
-            }
-        }else if( "Drink".equals(selectedIngredient) ){
-            Drink d = new Drink(name, calories, volume, new OurColor(red, green, blue));
-            try{
+            } else if ("Drink".equals(selectedIngredient)) {
+                Drink d = new Drink(name, calories, volume, new OurColor(red, green, blue));
                 Gui.blender.add(d);
-                tbModel.addRow(data);
-            }catch(BlenderOverFlowException e){
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
-            }
-        }else{
-            Extra ex = new Extra(name, calories, volume, new OurColor(red, green, blue));
-            try{
+            } else {
+                Extra ex = new Extra(name, calories, volume, new OurColor(red, green, blue));
                 Gui.blender.add(ex);
-                tbModel.addRow(data);
-            }catch(BlenderOverFlowException e){
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
             }
+
+            tbModel.addRow(data); // Add row to table model
+            ingredientsTable.setModel(tbModel); // Set updated model to the table
+        }catch (BlenderOverFlowException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Exception!", JOptionPane.WARNING_MESSAGE);
         }
-        //Gui.adding.setVisible(false);
+
+        // Clear input fields and reset color selector
         nameBox.setText("");
         caloriesBox.setText("");
         volTxt.setText("");
